@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;700&family=Smythe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant ordering app</title>
+</head>
+<body>
+    <div class="container">
+            
+        <div class="header header-bg">
+            <h1 class="title">Jimmy’s Diner</h1>
+            <p class="sub-title">The best burgers and pizzas in town.</p>
+        </div>
+        
+        <div class="menu" id="menu">
+                            
+        </div>
+        
+        <div class="order hidden" id="order">
+            
+        </div>
+        
+    </div>
+    <div class="modal hidden" id="modal">
+
+        <div class="close-modal-container">
+            <button class="close-modal-btn" id="close-modal-btn">X</button>
+        </div>
+
+        <div class="modal-inner" id="modal-inner">
+            <h1 class="modal-title">Complete your order</h1>
+
+            <form id="place-order-form">
+                <input 
+                    type="text" 
+                    name="firstName" 
+                    placeholder="First name" 
+                    id="firstNameInput"
+                    required
+                    />
+                <input 
+                    type="number" 
+                    name="cardNumber" 
+                    placeholder="Card number"
+                    oninput="validity.valid||(value='');"
+                    pattern="/^-?\d+\.?\d*$/"
+                    onKeyPress="if(this.value.length==16) return false;"
+                    id="cardNumberInput" 
+                    required
+                    />
+                <input 
+                    type="number" 
+                    name="cardCvv" 
+                    placeholder="CVV" 
+                    class="card-cvv" 
+                    min="0"
+                    oninput="validity.valid||(value='');"
+                    pattern="/^-?\d+\.?\d*$/"
+                    onKeyPress="if(this.value.length==3) return false;"
+                    id="cvvInput"
+                    required
+                    />
+                <button class="place-order-btn" type="submit">Pay</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="placed-order-msg" class="placed-order-msg hidden">
+        <h2><span id="firstName"></span>, your order is being prepared..</h2>
+    </div>
+    
+    <script src="index.js" type="module"></script>
+</body>
+</html>
